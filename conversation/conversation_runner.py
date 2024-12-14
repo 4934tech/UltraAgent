@@ -1,5 +1,7 @@
 import json
 from api.govee_client import govee_list_devices, govee_turn_light
+from utils.messages import system_message, developer_message  # Import the messages
+from functions.gpt_functions import functions  # Import the GPT-4 function schemas
 
 def run_conversation(user_message, openai_client, govee_api_key):
     messages = [

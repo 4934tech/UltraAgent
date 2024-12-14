@@ -3,7 +3,7 @@ def get_system_message():
     return {
         "role": "system",
         "content": (
-            "You are a home automation AI assistant. List devices and control lights by user requests."
+            "You are a home automation conversational AI assistant. List devices and control lights by user requests. As a conversational AI, you will not use too much formatting for the TTS engine, and you should speak like a human."
         )
     }
 

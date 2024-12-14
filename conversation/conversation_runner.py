@@ -1,41 +1,33 @@
 import json
-from api.govee_client import govee_list_devices, govee_turn_light
-from utils.messages import system_message, developer_message  # Import the messages
-from functions.gpt_functions import functions  # Import the GPT-4 function schemas
+from functions.functions_loader import load_functions
+from utils.messages import get_system_message, get_developer_message
 
-def run_conversation(user_message, openai_client, govee_api_key):
+def run_interactive_conversation(openai_client, govee_api_key):
+    # Load schemas and mappings dynamically
+    functions_data = load_functions()
+    functions = functions_data["schemas"]
+    function_mappings = functions_data["mappings"]
+
+    # Initialize message history
     messages = [
-        system_message,
-        developer_message,
-        {"role": "user", "content": user_message}
+        get_system_message(),
+        get_developer_message()
     ]
 
-    response = openai_client.chat.completions.create(
-        model="gpt-4",
-        messages=messages,
-        functions=functions,
-        function_call="auto"
-    )
+    print("Welcome to the Govee Assistant! Type your commands below.")
+    print("Type 'exit' to end the session.\n")
 
-    current_message = response.choices[0].message
+    while True:
+        # Get user input
+        user_message = input("You: ").strip()
+        if user_message.lower() == "exit":
+            print("Goodbye!")
+            break
 
-    while current_message.function_call:
-        function_name = current_message.function_call.name
-        arguments = json.loads(current_message.function_call.arguments)
+        # Add user message to history
+        messages.append({"role": "user", "content": user_message})
 
-        if function_name == "govee_list_devices":
-            result = govee_list_devices(govee_api_key)
-        elif function_name == "govee_turn_light":
-            result = govee_turn_light(
-                arguments["device_id"],
-                arguments["device_model"],
-                arguments["action"],
-                govee_api_key
-            )
-        else:
-            result = {"status": "error", "message": "Unknown function"}
-
-        messages.append({"role": "assistant", "name": function_name, "content": str(result)})
+        # Get GPT-4 response
         response = openai_client.chat.completions.create(
             model="gpt-4",
             messages=messages,
@@ -43,5 +35,33 @@ def run_conversation(user_message, openai_client, govee_api_key):
             function_call="auto"
         )
         current_message = response.choices[0].message
+        messages.append(current_message)
 
-    return current_message.content
+        # Process function calls
+        while current_message.function_call:
+            function_name = current_message.function_call.name
+            arguments = json.loads(current_message.function_call.arguments)
+
+            if function_name in function_mappings:
+                # Dynamically call the function
+                function_to_call = function_mappings[function_name]
+                try:
+                    result = function_to_call(**arguments, api_key=govee_api_key)
+                except Exception as e:
+                    result = {"status": "error", "message": str(e)}
+            else:
+                result = {"status": "error", "message": f"Unknown function: {function_name}"}
+
+            # Add result to messages and get follow-up response
+            messages.append({"role": "assistant", "name": function_name, "content": str(result)})
+            follow_up_response = openai_client.chat.completions.create(
+                model="gpt-4",
+                messages=messages,
+                functions=functions,
+                function_call="auto"
+            )
+            current_message = follow_up_response.choices[0].message
+            messages.append(current_message)
+
+        # Print the assistant's final response
+        print(f"Assistant: {current_message.content}")

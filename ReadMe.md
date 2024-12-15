@@ -5,8 +5,9 @@ A powerful AI-powered agent with real-world capabilities.
 Project led by [Olav "Olavorw" Sharma](https://github.com/olavorw) & [Sahil Chopra](https://github.com/aunncodes)
 <details>
 <summary>
-## 🖇️ Links
+🖇️ Links
 </summary>
+## 🖇️ Links
 
 ### 🏗️ **Setup & Installation**
 - **[Quickstart](https://github.com/4934tech/UltraAgent/wiki/Quickstart):** Fast-track your setup with essential steps.

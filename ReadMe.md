@@ -1,4 +1,4 @@
-# 🕶️ Ultra Agent
+# 🕶️ UltraAgent
 
 A powerful AI-powered agent with real-world capabilities.
 

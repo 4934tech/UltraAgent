@@ -1,7 +1,7 @@
 from elevenlabs.client import ElevenLabs
-from elevenlabs import stream
+from elevenlabs import stream, VoiceSettings
 
-def speak_with_elevenlabs(api_key, text, voice="Phoenix"):
+def speak_with_elevenlabs(api_key, text, voice):
     """
     Use ElevenLabs TTS to speak the given text via streaming.
 
@@ -13,11 +13,19 @@ def speak_with_elevenlabs(api_key, text, voice="Phoenix"):
         # Initialize ElevenLabs client
         client = ElevenLabs(api_key=api_key)
 
+        voice_settings = VoiceSettings(
+            stability=0.5,
+            similarity_boost=0.8
+        )
+
         # Generate the audio stream
         audio_stream = client.generate(
             text=text,
             voice=voice,
-            stream=True
+            voice_settings=voice_settings,
+            stream=True,
+            model="eleven_turbo_v2_5",
+            optimize_streaming_latency=3
         )
 
         # Stream and play the audio

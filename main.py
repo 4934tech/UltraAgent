@@ -8,7 +8,7 @@ def run_voice_conversation():
     """Run an interactive voice conversation."""
     client = create_openai_client(OPENAI_API_KEY)
     print("Voice assistant initialized. Say 'exit' to end the session.")
-    speak_with_elevenlabs(ELEVENLABS_API_KEY, "Hello, how can I assist you with your Govee devices?")
+    speak_with_elevenlabs(ELEVENLABS_API_KEY, "Phoenix is listening in.", "Phoenix")
 
     # Initialize the chat history
     messages = []
@@ -21,7 +21,7 @@ def run_voice_conversation():
 
         print(f"You: {user_message}")
         if user_message.lower() == "exit":
-            speak_with_elevenlabs(ELEVENLABS_API_KEY, "Goodbye!")
+            speak_with_elevenlabs(ELEVENLABS_API_KEY, "Phoenix out.", "Phoenix")
             break
 
         # Process conversation
@@ -29,7 +29,7 @@ def run_voice_conversation():
 
         # Speak and display the assistant's response
         print(f"Assistant: {response}")
-        speak_with_elevenlabs(ELEVENLABS_API_KEY, response)
+        speak_with_elevenlabs(ELEVENLABS_API_KEY, response, "Phoenix")
 
 if __name__ == "__main__":
     run_voice_conversation()

@@ -1,13 +1,10 @@
+# audio/elevenlabs_tts.py
 from elevenlabs.client import ElevenLabs
 from elevenlabs import stream, VoiceSettings
 
 def speak_with_elevenlabs(api_key, text, voice):
     """
     Use ElevenLabs TTS to speak the given text via streaming.
-
-    :param api_key: Your ElevenLabs API key.
-    :param text: Text to convert to speech.
-    :param voice: The ElevenLabs voice to use.
     """
     try:
         # Initialize ElevenLabs client

@@ -4,19 +4,13 @@ A powerful AI-powered agent with real-world capabilities.
 
 Project led by [Olav "Olavorw" Sharma](https://github.com/olavorw) & [Sahil Chopra](https://github.com/aunncodes)
 
----
-
 ## Documentation
 
 Full documentation for Ultra Agent, including setup, configuration, and troubleshooting, is available on our [wiki](https://github.com/4934tech/UltraAgent/wiki).
 
----
-
 ## About Ultra Agent
 
 With **Ultra Agent**, you can automate complex workflows, enhance decision-making, and interact seamlessly with real-world systems.
-
----
 
 ## Quick Start
 
@@ -29,7 +23,7 @@ With **Ultra Agent**, you can automate complex workflows, enhance decision-makin
     ```
 2. Configure your credentials:
    
-   An OpenAI key is required for the bot. The bot by default is configured to use ElevenLabs for TTS, so you'll need one of those too. If you don't have one, you can use the [legacy TTS engine](./audio/tts.py) instead.
+   An OpenAI key is required for the bot. The bot by default is configured to use ElevenLabs for TTS, so you'll need one of those too. If you don't have one, you can use the [legacy TTS engine](./src/audio/tts.py) instead.
    ```bash
    cp .env.example .env
    nano .env
@@ -57,16 +51,10 @@ With **Ultra Agent**, you can automate complex workflows, enhance decision-makin
     python main.py
     ```
 
----
-
 ## Contributing
 
 We welcome contributions from the community! Please read our [contributing guidelines](./Contributing.md) for more information.
 
----
-
 ## License
 
 This project is licensed under the [GNU General Public License (GPL) v3](./License.md).
-
----

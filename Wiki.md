@@ -41,7 +41,7 @@
 - **[System Integration](#):** Seamlessly connect UltraAgent with your systems.
 
 <!--- Home --->
-# Welcome to the UltraAgent Wiki
+# 📖 Welcome to the UltraAgent Wiki
 
 UltraAgent is an advanced AI-powered automation framework designed to simplify complex workflows, provide intelligent decision support, and integrate seamlessly with real-world systems. This wiki is your comprehensive guide to understanding, using, and contributing to UltraAgent.
 

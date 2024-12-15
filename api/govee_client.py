@@ -50,8 +50,16 @@ def govee_set_color(device_id, device_model, color, api_key):
     payload = {
         "device": device_id,
         "model": device_model,
-        "cmd": {"name": "color", "value": color}
+        "cmd": {
+            "name": "color",
+            "value": {
+                "r": color["r"],
+                "g": color["g"],
+                "b": color["b"]
+            }
+        }
     }
+
     response = requests.put(url, headers=headers, json=payload)
     return response.json() if response.status_code == 200 else {"status": "error", "error": response.text}
 

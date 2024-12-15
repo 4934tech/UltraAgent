@@ -47,7 +47,16 @@ govee_function_schemas = [
             "properties": {
                 "device_id": {"type": "string", "description": "The Govee device ID"},
                 "device_model": {"type": "string", "description": "The Govee device model"},
-                "color": {"type": "object", "description": "RGB values (e.g., {'r': 255, 'g': 255, 'b': 255})"}
+                "color": {
+                    "type": "object",
+                    "description": "RGB values (e.g., {'r': 255, 'g': 255, 'b': 255})",
+                    "properties": {
+                        "r": {"type": "integer", "minimum": 0, "maximum": 255},
+                        "g": {"type": "integer", "minimum": 0, "maximum": 255},
+                        "b": {"type": "integer", "minimum": 0, "maximum": 255}
+                    },
+                    "required": ["r", "g", "b"]
+                }
             },
             "required": ["device_id", "device_model", "color"]
         }

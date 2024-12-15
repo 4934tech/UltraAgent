@@ -78,7 +78,10 @@ def run_conversation(user_message, openai_client, govee_api_key, messages):
         arguments = json.loads(current_message.function_call.arguments)
         if function_name in function_mappings:
             function_to_call = function_mappings[function_name]
-            result = function_to_call(**arguments, api_key=govee_api_key)
+            try:
+                result = function_to_call(**arguments, api_key=govee_api_key)
+            except Exception as e:
+                result = {"status": "error", "message": str(e)}
         else:
             result = {"status": "error", "message": f"Unknown function: {function_name}"}
 

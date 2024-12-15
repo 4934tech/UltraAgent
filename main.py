@@ -8,7 +8,7 @@ from audio.tts_controller import play_tts_with_interruption
 def run_voice_conversation():
     client = create_openai_client(OPENAI_API_KEY)
     print("Voice assistant initialized. Say 'exit' to end the session.")
-    speak_with_elevenlabs(ELEVENLABS_API_KEY, "Phoenix is listening in.", "Phoenix")
+    speak_with_elevenlabs(ELEVENLABS_API_KEY, "Phoenix listening in.", "Phoenix")
     messages = []
 
     while True:

@@ -23,7 +23,7 @@ def run_interactive_conversation(openai_client, govee_api_key):
         messages.append({"role": "user", "content": user_message})
         
         response = openai_client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4o",
             messages=messages,
             functions=functions,
             function_call="auto"
@@ -45,7 +45,7 @@ def run_interactive_conversation(openai_client, govee_api_key):
 
             messages.append({"role": "assistant", "name": function_name, "content": str(result)})
             follow_up_response = openai_client.chat.completions.create(
-                model="gpt-4",
+                model="gpt-4o",
                 messages=messages,
                 functions=functions,
                 function_call="auto"
@@ -65,7 +65,7 @@ def run_conversation(user_message, openai_client, govee_api_key, messages):
         messages.extend([get_system_message(), get_developer_message()])
     messages.append({"role": "user", "content": user_message})
     response = openai_client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-4o",
         messages=messages,
         functions=functions,
         function_call="auto"
@@ -87,7 +87,7 @@ def run_conversation(user_message, openai_client, govee_api_key, messages):
 
         messages.append({"role": "assistant", "name": function_name, "content": str(result)})
         follow_up_response = openai_client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4o",
             messages=messages,
             functions=functions,
             function_call="auto"

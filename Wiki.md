@@ -45,11 +45,11 @@
 
 UltraAgent is an advanced AI-powered automation framework designed to simplify complex workflows, provide intelligent decision support, and integrate seamlessly with real-world systems. This wiki is your comprehensive guide to understanding, using, and contributing to UltraAgent.
 
+## 🖇 Table of Contents
 <details>
 <summary>
-🖇 Table of Contents
+Open Table of Contents
 </summary>
-## 🖇 Table of Contents
 Explore the sections below to get started with UltraAgent:
 
 ### 🏗️ **Setup & Installation**

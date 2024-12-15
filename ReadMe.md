@@ -1,14 +1,14 @@
-# Ultra Agent
+# 🕶️ Ultra Agent
 
 A powerful AI-powered agent with real-world capabilities.
 
 Project led by [Olav "Olavorw" Sharma](https://github.com/olavorw) & [Sahil Chopra](https://github.com/aunncodes)
 
-## About Ultra Agent
+## 🥏 About Ultra Agent
 
 With **Ultra Agent**, you can automate complex workflows, enhance decision-making, and interact seamlessly with real-world systems.
 
-## Key Features
+## 🌟 Key Features
 
 - Automation of Complex Workflows: UltraAgent streamlines intricate processes, reducing manual intervention and increasing efficiency.
 
@@ -16,11 +16,11 @@ With **Ultra Agent**, you can automate complex workflows, enhance decision-makin
 
 - Real-World System Integration: UltraAgent seamlessly interacts with existing systems, ensuring smooth integration and operation.
 
-## Documentation
+## 🧰 Documentation
 
 Full documentation for Ultra Agent, including setup, configuration, and troubleshooting, is available on our [wiki](https://github.com/4934tech/UltraAgent/wiki).
 
-## Quick Start
+## 📖 Quick Start
 
 1. Clone the repository:
 
@@ -59,11 +59,11 @@ Full documentation for Ultra Agent, including setup, configuration, and troubles
     python main.py
     ```
 
-## Contributing
+## 🛠️ Contributing
 
 We welcome contributions from the community! Please read our [contributing guidelines](./Contributing.md) for more information.
 
-## License
+## 📜 License
 
 This project is licensed under the [GNU General Public License (GPL) v3](./License.md).
 

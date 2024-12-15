@@ -1,10 +1,6 @@
-# example_functions.py
-
 def example_function(param1, param2):
-    """Example function for demonstration purposes."""
     return {"status": "success", "param1": param1, "param2": param2}
 
-# Function schemas for Example API
 example_function_schemas = [
     {
         "name": "example_function",
@@ -20,7 +16,6 @@ example_function_schemas = [
     }
 ]
 
-# Function mappings for Example API
 example_function_mappings = {
     "example_function": example_function
 }

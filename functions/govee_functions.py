@@ -7,7 +7,6 @@ from api.govee_client import (
     govee_get_device_state
 )
 
-# Function schemas for Govee API
 govee_function_schemas = [
     {
         "name": "govee_list_devices",
@@ -80,7 +79,6 @@ govee_function_schemas = [
     }
 ]
 
-# Function mappings for Govee API
 govee_function_mappings = {
     "govee_list_devices": govee_list_devices,
     "govee_turn_light": govee_turn_light,

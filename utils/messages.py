@@ -1,4 +1,3 @@
-# utils/messages.py
 def get_system_message():
     return {
         "role": "system",

@@ -1,4 +1,3 @@
-# main.py
 from audio.recognizer import recognize_speech
 from audio.elevenlabs_tts import speak_with_elevenlabs
 from conversation.conversation_runner import run_conversation
@@ -16,19 +15,15 @@ def run_voice_conversation():
         user_message = recognize_speech()
         if not user_message:
             continue
-
         print(f"You: {user_message}")
         if user_message.lower() == "exit":
             speak_with_elevenlabs(ELEVENLABS_API_KEY, "Phoenix out.", "Phoenix")
             break
-
         response = run_conversation(user_message, client, GOVEE_API_KEY, messages)
         print(f"Assistant: {response}")
 
-        # Play TTS with interruption support
         interruption = play_tts_with_interruption(ELEVENLABS_API_KEY, response, "Phoenix")
 
-        # If user interrupted mid-TTS, handle that interruption message immediately
         while interruption:
             print(f"You (interruption): {interruption}")
             response = run_conversation(interruption, client, GOVEE_API_KEY, messages)

@@ -16,8 +16,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-from functions.govee_functions import govee_function_schemas, govee_function_mappings
-from functions.example_functions import example_function_schemas, example_function_mappings
+from src.functions.govee_functions import govee_function_schemas, govee_function_mappings
+from src.functions.example_functions import example_function_schemas, example_function_mappings
 
 def load_functions():
     schemas = govee_function_schemas + example_function_schemas

@@ -16,7 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-from api.govee_client import (
+from src.api.govee_client import (
     govee_list_devices,
     govee_turn_light,
     govee_set_brightness,

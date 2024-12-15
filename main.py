@@ -16,14 +16,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-from audio.recognizer import recognize_speech
-from audio.elevenlabs_tts import speak_with_elevenlabs
-from conversation.conversation_runner import run_conversation
-from config.env import OPENAI_API_KEY, GOVEE_API_KEY, ELEVENLABS_API_KEY
-from api.openai_client import create_openai_client
-from audio.tts_controller import play_tts_with_interruption
-
-print("UltraAgent  Copyright (C) 2024  Olav Sharma - 4934.tech\nThis program comes with ABSOLUTELY NO WARRANTY.\nThis is free software, and you are welcome to redistribute it\nunder certain conditions. To learn more, go to: <https://github.com/4934tech/UltraAgent/blob/master/license.md> for details.")
+from src.audio.recognizer import recognize_speech
+from src.audio.elevenlabs_tts import speak_with_elevenlabs
+from src.conversation.conversation_runner import run_conversation
+from src.config.env import OPENAI_API_KEY, GOVEE_API_KEY, ELEVENLABS_API_KEY
+from src.api.openai_client import create_openai_client
+from src.audio.tts_controller import play_tts_with_interruption
 
 def run_voice_conversation():
     client = create_openai_client(OPENAI_API_KEY)
@@ -51,4 +49,8 @@ def run_voice_conversation():
             interruption = play_tts_with_interruption(ELEVENLABS_API_KEY, response, "Phoenix")
 
 if __name__ == "__main__":
+    print("UltraAgent  Copyright (C) 2024  Olav Sharma - 4934.tech")
+    print("This program comes with ABSOLUTELY NO WARRANTY.")
+    print("This is free software, and you are welcome to redistribute it")
+    print("under certain conditions. To learn more, go to: <https://github.com/4934tech/UltraAgent/blob/master/license.md> for details.\n")
     run_voice_conversation()

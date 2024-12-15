@@ -17,8 +17,8 @@
 """
 
 import json
-from functions.functions_loader import load_functions
-from utils.messages import get_system_message, get_developer_message
+from src.functions.functions_loader import load_functions
+from src.utils.messages import get_system_message, get_developer_message
 
 def run_interactive_conversation(openai_client, govee_api_key):
     

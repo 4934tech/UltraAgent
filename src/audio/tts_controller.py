@@ -17,8 +17,8 @@
 """
 
 import multiprocessing
-from audio.recognizer import recognize_speech
-from audio.elevenlabs_tts import speak_with_elevenlabs
+from src.audio.recognizer import recognize_speech
+from src.audio.elevenlabs_tts import speak_with_elevenlabs
 
 def play_tts_with_interruption(api_key, text, voice):
     """

@@ -7,7 +7,7 @@ Project led by [Olav "Olavorw" Sharma](https://github.com/olavorw) & [Sahil Chop
 ## 🖇️ Links
 <details>
 <summary>
-Open Table of Contents & Links
+Table of Contents & Links
 </summary>
 
 ### 🏗️ **Setup & Installation**

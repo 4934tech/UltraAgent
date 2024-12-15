@@ -48,8 +48,9 @@ UltraAgent is an advanced AI-powered automation framework designed to simplify c
 ## 🖇 Table of Contents
 <details>
 <summary>
-Open Table of Contents
+Table of Contents
 </summary>
+
 Explore the sections below to get started with UltraAgent:
 
 ### 🏗️ **Setup & Installation**

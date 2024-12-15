@@ -1,16 +1,10 @@
-<!--- Home --->
-# Welcome to the UltraAgent Wiki
-
-UltraAgent is an advanced AI-powered automation framework designed to simplify complex workflows, provide intelligent decision support, and integrate seamlessly with real-world systems. This wiki is your comprehensive guide to understanding, using, and contributing to UltraAgent.
-
-## 🖇 Table of Contents
-Explore the sections below to get started with UltraAgent:
+<!--- Sidebar --->
+## 🕶️ 4934 UltraAgent Wiki
 
 ### 🏗️ **Setup & Installation**
 - **[Quickstart](https://github.com/4934tech/UltraAgent/wiki/Quickstart):** Fast-track your setup with essential steps.
-  - **[Prerequisites](https://github.com/4934tech/UltraAgent/wiki/Quickstart):** Ensure your system meets the requirements.
-  - **[Installation](https://github.com/4934tech/UltraAgent/wiki/Quickstart):** Detailed installation instructions.
-  - **[Credentials Setup](https://github.com/4934tech/UltraAgent/wiki/Quickstart):** Configure UltraAgent for your specific needs.
+    - **[Prerequisites](https://github.com/4934tech/UltraAgent/wiki/Quickstart#-Prerequisites):** Ensure your system meets the requirements.
+    - **[Installation](https://github.com/4934tech/UltraAgent/wiki/Quickstart#-Installation):** Detailed installation instructions.
 
 ### 💫 **Features**
 - **[Automation](#):** Simplify workflows with UltraAgent.
@@ -45,6 +39,57 @@ Explore the sections below to get started with UltraAgent:
 - **[Automating Workflows](#):** Optimize processes with automation.
 - **[Data Analysis](#):** Leverage AI for insightful analysis.
 - **[System Integration](#):** Seamlessly connect UltraAgent with your systems.
+
+<!--- Home --->
+# Welcome to the UltraAgent Wiki
+
+UltraAgent is an advanced AI-powered automation framework designed to simplify complex workflows, provide intelligent decision support, and integrate seamlessly with real-world systems. This wiki is your comprehensive guide to understanding, using, and contributing to UltraAgent.
+
+<details>
+<summary>
+## 🖇 Table of Contents
+</summary>
+Explore the sections below to get started with UltraAgent:
+
+### 🏗️ **Setup & Installation**
+- **[Quickstart](https://github.com/4934tech/UltraAgent/wiki/Quickstart):** Fast-track your setup with essential steps.
+    - **[Prerequisites](https://github.com/4934tech/UltraAgent/wiki/Quickstart#-Prerequisites):** Ensure your system meets the requirements.
+    - **[Installation](https://github.com/4934tech/UltraAgent/wiki/Quickstart#-Installation):** Detailed installation instructions.
+
+### 💫 **Features**
+- **[Automation](#):** Simplify workflows with UltraAgent.
+- **[Decision Support](#):** Leverage AI for smarter decision-making.
+- **[Integration](#):** Connect seamlessly with real-world systems.
+
+### ⚒️ **Prebuilt Modules**
+- **[Prebuilt Functions](#):** Plug-and-play modules for quick functionality.
+- **[Prebuilt Integrations](#):** Ready-to-use integrations with popular services.
+
+### 🧠 **Models**
+- **[Speech to Text](#):** Optimize audio transcription.
+- **[Text to Speech](#):** Generate natural-sounding speech.
+- **[Image Recognition](#):** Enhance image analysis.
+- **[Data Analysis](#):** Visualize and interpret data effectively.
+- **[Predictive Modeling](#):** Forecast trends with AI-powered predictions.
+
+### 🔌 **Integrations**
+- **[Third-Party Services](#):** Connect with widely used platforms.
+- **[APIs](#):** Integrate external systems through APIs.
+- **[Webhooks](#):** Automate triggers and actions.
+- **[Databases](#):** Enable efficient data storage and retrieval.
+
+### ⚙️ **Custom Functionality**
+- **[Custom Scripts](#):** Enhance UltraAgent with your own scripts.
+- **[Custom Plugins](#):** Expand capabilities with custom plugins.
+- **[Custom Dashboards](#):** Design dashboards for visualizing data.
+- **[Custom Reports](#):** Generate tailored reports.
+- **[Custom Models](#):** Train models for your specific needs.
+
+### 👁️ **Usage Examples**
+- **[Automating Workflows](#):** Optimize processes with automation.
+- **[Data Analysis](#):** Leverage AI for insightful analysis.
+- **[System Integration](#):** Seamlessly connect UltraAgent with your systems.
+</details>
 
 ## 🔧 About UltraAgent
 UltraAgent empowers developers and organizations to harness the power of AI to automate tasks, analyze data, and create meaningful interactions with various systems. Its core features include:

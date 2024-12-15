@@ -3,37 +3,15 @@
 A powerful AI-powered agent with real-world capabilities.
 
 Project led by [Olav "Olavorw" Sharma](https://github.com/olavorw) & [Sahil Chopra](https://github.com/aunncodes)
-
-## 🖇️ Table of Contents
-
-- [About Ultra Agent](#-about-ultra-agent)
-- [Key Features](#-key-features)
-- [Documentation](#-documentation)
-- [Quickstart](#quickstart)
-- [Contributing](#️-contributing)
-- [License](#-license)
-- [Contact](#-contact)
-- [Acknowledgements](#-acknowledgements)
-
-## 🧰 About Ultra Agent
-
-With **Ultra Agent**, you can automate complex workflows, enhance decision-making, and interact seamlessly with real-world systems.
-
-## 🌟 Key Features
-
-- Automation of Complex Workflows: UltraAgent streamlines intricate processes, reducing manual intervention and increasing efficiency.
-
-- Enhanced Decision-Making: By utilizing AI, UltraAgent assists in making informed decisions based on data analysis and predictive modeling.
-
-- Real-World System Integration: UltraAgent seamlessly interacts with existing systems, ensuring smooth integration and operation.
-
-## 📖  Documentation
+<details>
+<summary>
+## 🖇️ Links
+</summary>
 
 ### 🏗️ **Setup & Installation**
-- **[Quickstart](#):** Fast-track your setup with essential steps.
-   - **[Prerequisites](#):** Ensure your system meets the requirements.
-   - **[Installation](#):** Detailed installation instructions.
-   - **[Credentials Setup](#):** Configure UltraAgent for your specific needs.
+- **[Quickstart](https://github.com/4934tech/UltraAgent/wiki/Quickstart):** Fast-track your setup with essential steps.
+  - **[Prerequisites](https://github.com/4934tech/UltraAgent/wiki/Quickstart#-Prerequisites):** Ensure your system meets the requirements.
+  - **[Installation](https://github.com/4934tech/UltraAgent/wiki/Quickstart#-Installation):** Detailed installation instructions.
 
 ### 💫 **Features**
 - **[Automation](#):** Simplify workflows with UltraAgent.
@@ -68,6 +46,19 @@ With **Ultra Agent**, you can automate complex workflows, enhance decision-makin
 - **[Automating Workflows](#):** Optimize processes with automation.
 - **[Data Analysis](#):** Leverage AI for insightful analysis.
 - **[System Integration](#):** Seamlessly connect UltraAgent with your systems.
+</details>
+
+## 🧰 About Ultra Agent
+
+With **Ultra Agent**, you can automate complex workflows, enhance decision-making, and interact seamlessly with real-world systems.
+
+## 🌟 Key Features
+
+- Automation of Complex Workflows: UltraAgent streamlines intricate processes, reducing manual intervention and increasing efficiency.
+
+- Enhanced Decision-Making: By utilizing AI, UltraAgent assists in making informed decisions based on data analysis and predictive modeling.
+
+- Real-World System Integration: UltraAgent seamlessly interacts with existing systems, ensuring smooth integration and operation.
 
 ## 🤝 Contributing
 

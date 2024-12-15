@@ -7,7 +7,7 @@ Project led by [Olav "Olavorw" Sharma](https://github.com/olavorw) & [Sahil Chop
 ## 🖇️ Links
 <details>
 <summary>
-Table of Contents & Links
+Explore the sections below to get started with UltraAgent.
 </summary>
 
 ### 🏗️ **Setup & Installation**

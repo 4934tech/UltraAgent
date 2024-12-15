@@ -4,7 +4,18 @@ A powerful AI-powered agent with real-world capabilities.
 
 Project led by [Olav "Olavorw" Sharma](https://github.com/olavorw) & [Sahil Chopra](https://github.com/aunncodes)
 
-## 🥏 About Ultra Agent
+## 🖇️ Table of Contents
+
+- [About Ultra Agent](#-about-ultra-agent)
+- [Key Features](#-key-features)
+- [Documentation](#-documentation)
+- [Quickstart](#quickstart)
+- [Contributing](#️-contributing)
+- [License](#-license)
+- [Contact](#-contact)
+- [Acknowledgements](#-acknowledgements)
+
+## 🧰 About Ultra Agent
 
 With **Ultra Agent**, you can automate complex workflows, enhance decision-making, and interact seamlessly with real-world systems.
 
@@ -16,11 +27,11 @@ With **Ultra Agent**, you can automate complex workflows, enhance decision-makin
 
 - Real-World System Integration: UltraAgent seamlessly interacts with existing systems, ensuring smooth integration and operation.
 
-## 🧰 Documentation
+## 📖  Documentation
 
 Full documentation for Ultra Agent, including setup, configuration, and troubleshooting, is available on our [wiki](https://github.com/4934tech/UltraAgent/wiki).
 
-## 📖 Quick Start
+## 🚀Quickstart
 
 1. Clone the repository:
 
@@ -59,7 +70,7 @@ Full documentation for Ultra Agent, including setup, configuration, and troubles
     python main.py
     ```
 
-## 🛠️ Contributing
+## 🤝 Contributing
 
 We welcome contributions from the community! Please read our [contributing guidelines](./Contributing.md) for more information.
 
@@ -67,4 +78,12 @@ We welcome contributions from the community! Please read our [contributing guide
 
 This project is licensed under the [GNU General Public License (GPL) v3](./License.md).
 
+## 📞 Contact
+
 For any questions or support, please open an issue in the GitHub repository or contact the maintainers directly.
+
+## 🫂 Acknowledgements
+
+- [OpenAI](https://openai.com) for making this 10x easier with their built-in function support.
+- [ElevenLabs](https://eleven-labs.com) for making incredibly fast & high-quality TTS.
+- [Google Speech Recognition](https://cloud.google.com/speech-to-text) for their excellent speech recognition capabilities.

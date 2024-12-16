@@ -1,5 +1,5 @@
 <!--- Sidebar --->
-## 🕶️ 4934 UltraAgent Wiki
+## 📖 UltraAgent Wiki
 
 ### 🏗️ **Setup & Installation**
 - **[Quickstart](https://github.com/4934tech/UltraAgent/wiki/Quickstart):** Fast-track your setup with essential steps.

@@ -1,6 +1,6 @@
 """
     UltraAgent is an AI agent with real-world powers to control many applications.
-    Copyright (C) 2024  Olav Sharma - 4934.tech
+    Copyright (C) 2024  Olav "Olavorw" Sharma - 4934 Tech
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

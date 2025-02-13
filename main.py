@@ -23,10 +23,10 @@ from src.config.env import OPENAI_API_KEY, GOVEE_API_KEY, ELEVENLABS_API_KEY
 from src.api.openai_client import create_openai_client
 from src.audio.tts_controller import play_tts_with_interruption
 
-def run_voice_conversation():
+def run_voice_conversation(voice_id):
     client = create_openai_client(OPENAI_API_KEY)
     print("Voice assistant initialized. Say 'exit' to end the session.")
-    speak_with_elevenlabs(ELEVENLABS_API_KEY, "Phoenix listening in.", "Phoenix")
+    speak_with_elevenlabs(ELEVENLABS_API_KEY, "Phoenix listening in.", voice_id)
     messages = []
 
     while True:
@@ -35,22 +35,22 @@ def run_voice_conversation():
             continue
         print(f"You: {user_message}")
         if user_message.lower() == "exit":
-            speak_with_elevenlabs(ELEVENLABS_API_KEY, "Phoenix out.", "Phoenix")
+            speak_with_elevenlabs(ELEVENLABS_API_KEY, "Phoenix out.", voice_id)
             break
         response = run_conversation(user_message, client, GOVEE_API_KEY, messages)
         print(f"Assistant: {response}")
 
-        interruption = play_tts_with_interruption(ELEVENLABS_API_KEY, response, "Phoenix")
+        interruption = play_tts_with_interruption(ELEVENLABS_API_KEY, response, voice_id)
 
         while interruption:
             print(f"You (interruption): {interruption}")
             response = run_conversation(interruption, client, GOVEE_API_KEY, messages)
             print(f"Assistant: {response}")
-            interruption = play_tts_with_interruption(ELEVENLABS_API_KEY, response, "Phoenix")
+            interruption = play_tts_with_interruption(ELEVENLABS_API_KEY, response, voice_id)
 
 if __name__ == "__main__":
     print("UltraAgent  Copyright (C) 2024  Olav Sharma - 4934.tech")
     print("This program comes with ABSOLUTELY NO WARRANTY.")
     print("This is free software, and you are welcome to redistribute it")
     print("under certain conditions. To learn more, go to: <https://github.com/4934tech/UltraAgent/blob/master/license.md> for details.\n")
-    run_voice_conversation()
+    run_voice_conversation("uIOPHXRRaPBHQzb3tDcx")

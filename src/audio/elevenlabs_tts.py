@@ -16,33 +16,59 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-from elevenlabs.client import ElevenLabs
-from elevenlabs import stream, VoiceSettings
+import requests
+import io
+import sounddevice as sd
+import numpy as np
+from pydub import AudioSegment
+from pydub.playback import play
 
-def speak_with_elevenlabs(api_key, text, voice):
+def speak_with_elevenlabs(api_key, text, voice_name):
     """
-    Use ElevenLabs TTS to speak the given text via streaming.
+    Use ElevenLabs TTS to speak the given text using the REST API directly.
     """
     try:
+        # API endpoint
+        url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_name}"
         
-        client = ElevenLabs(api_key=api_key)
-
-        voice_settings = VoiceSettings(
-            stability=0.5,
-            similarity_boost=0.8
-        )
-
+        # Request headers
+        headers = {
+            "Accept": "audio/mpeg",
+            "Content-Type": "application/json",
+            "xi-api-key": api_key
+        }
         
-        audio_stream = client.generate(
-            text=text,
-            voice=voice,
-            voice_settings=voice_settings,
-            stream=True,
-            model="eleven_turbo_v2_5",
-            optimize_streaming_latency=3
-        )
-
+        # Request body
+        body = {
+            "text": text,
+            "model_id": "eleven_multilingual_v2",
+            "voice_settings": {
+                "stability": 0.5,
+                "similarity_boost": 0.75
+            }
+        }
         
-        stream(audio_stream)
+        # Make the API request
+        response = requests.post(url, json=body, headers=headers)
+        
+        if response.status_code != 200:
+            raise Exception(f"API request failed with status {response.status_code}: {response.text}")
+        
+        # Convert response content to audio
+        audio = AudioSegment.from_mp3(io.BytesIO(response.content))
+        
+        # Play the audio
+        play(audio)
+        
     except Exception as e:
-        print(f"Error during ElevenLabs TTS streaming: {e}")
+        error_msg = str(e)
+        print(f"Error during ElevenLabs TTS: {error_msg}")
+        
+        if "Could not find voice" in error_msg:
+            print("Voice not found. Please check the voice name and try again.")
+        elif "Invalid API key" in error_msg or "Unauthorized" in error_msg:
+            print("Invalid API key. Please check your ElevenLabs API key.")
+        elif "quota" in error_msg.lower():
+            print("API quota exceeded. Please check your ElevenLabs subscription.")
+        elif "WinError" in error_msg:
+            print("Audio device not found. Please check your audio settings and ensure speakers/headphones are connected.")

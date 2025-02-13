@@ -1,6 +1,7 @@
-requests~=2.32.3
-openai~=1.57.4
-pyttsx3~=2.98
-SpeechRecognition~=3.12.0
-elevenlabs~=1.50.1
-python-dotenv~=1.0.1
+elevenlabs>=0.2.26
+openai>=1.3.0
+python-dotenv>=1.0.0
+SpeechRecognition>=3.10.0
+pyaudio>=0.2.13
+sounddevice>=0.4.6
+numpy>=1.24.0

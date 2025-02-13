@@ -90,6 +90,20 @@ def run_interactive_conversation(openai_client, api_keys: dict):
 
         print(f"Assistant: {current_message.content}")
 
+def execute_command(command, arguments, api_keys):
+    """Execute a command with proper API key handling"""
+    try:
+        # Get all required API keys for the command
+        command_api_keys = {key: api_keys.get(key) for key in command.required_api_keys}
+        if not all(command_api_keys.values()):
+            missing_keys = [key for key in command.required_api_keys if not api_keys.get(key)]
+            return {"status": "error", "message": f"Missing required API keys: {missing_keys}"}
+            
+        # Execute command with all required API keys
+        return command.execute(**arguments, **command_api_keys)
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+
 def run_conversation(user_message, openai_client, api_keys: dict, messages):
     registry = initialize_command_registry(api_keys)
     
@@ -112,15 +126,7 @@ def run_conversation(user_message, openai_client, api_keys: dict, messages):
         
         command = registry.get_command(function_name)
         if command:
-            try:
-                # Validate API keys before execution
-                if not registry.validate_command_api_keys(command):
-                    missing_keys = [key for key in command.required_api_keys if key not in api_keys or not api_keys[key]]
-                    result = {"status": "error", "message": f"Missing required API keys: {missing_keys}"}
-                else:
-                    result = command.execute(**arguments, api_key=api_keys.get(command.required_api_keys[0]))
-            except Exception as e:
-                result = {"status": "error", "message": str(e)}
+            result = execute_command(command, arguments, api_keys)
         else:
             result = {"status": "error", "message": f"Unknown command: {function_name}"}
 

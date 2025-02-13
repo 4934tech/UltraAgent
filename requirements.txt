@@ -5,3 +5,4 @@ SpeechRecognition>=3.10.0
 pyaudio>=0.2.13
 sounddevice>=0.4.6
 numpy>=1.24.0
+spotipy>=2.23.0

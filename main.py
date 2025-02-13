@@ -19,7 +19,7 @@
 from src.audio.recognizer import recognize_speech
 from src.audio.elevenlabs_tts import speak_with_elevenlabs
 from src.conversation.conversation_runner import run_conversation
-from src.config.env import OPENAI_API_KEY, GOVEE_API_KEY, ELEVENLABS_API_KEY
+from src.config.env import OPENAI_API_KEY, GOVEE_API_KEY, ELEVENLABS_API_KEY, SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REDIRECT_URI
 from src.api.openai_client import create_openai_client
 from src.audio.tts_controller import play_tts_with_interruption
 
@@ -31,7 +31,10 @@ def run_voice_conversation(voice_id):
     api_keys = {
         "OPENAI_API_KEY": OPENAI_API_KEY,
         "GOVEE_API_KEY": GOVEE_API_KEY,
-        "ELEVENLABS_API_KEY": ELEVENLABS_API_KEY
+        "ELEVENLABS_API_KEY": ELEVENLABS_API_KEY,
+        "SPOTIFY_CLIENT_ID": SPOTIFY_CLIENT_ID,
+        "SPOTIFY_CLIENT_SECRET": SPOTIFY_CLIENT_SECRET,
+        "SPOTIFY_REDIRECT_URI": SPOTIFY_REDIRECT_URI
     }
     
     print("Voice assistant initialized. Say 'exit' to end the session.")

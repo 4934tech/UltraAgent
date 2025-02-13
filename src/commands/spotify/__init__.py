@@ -1,0 +1,1 @@
+from src.commands.spotify.spotify_commands import register_commands 

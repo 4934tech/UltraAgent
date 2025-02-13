@@ -24,7 +24,16 @@ from src.api.openai_client import create_openai_client
 from src.audio.tts_controller import play_tts_with_interruption
 
 def run_voice_conversation(voice_id):
+    # Initialize OpenAI client
     client = create_openai_client(OPENAI_API_KEY)
+    
+    # Create API keys dictionary
+    api_keys = {
+        "OPENAI_API_KEY": OPENAI_API_KEY,
+        "GOVEE_API_KEY": GOVEE_API_KEY,
+        "ELEVENLABS_API_KEY": ELEVENLABS_API_KEY
+    }
+    
     print("Voice assistant initialized. Say 'exit' to end the session.")
     speak_with_elevenlabs(ELEVENLABS_API_KEY, "Phoenix listening in.", voice_id)
     messages = []
@@ -37,14 +46,15 @@ def run_voice_conversation(voice_id):
         if user_message.lower() == "exit":
             speak_with_elevenlabs(ELEVENLABS_API_KEY, "Phoenix out.", voice_id)
             break
-        response = run_conversation(user_message, client, GOVEE_API_KEY, messages)
+        
+        response = run_conversation(user_message, client, api_keys, messages)
         print(f"Assistant: {response}")
 
         interruption = play_tts_with_interruption(ELEVENLABS_API_KEY, response, voice_id)
 
         while interruption:
             print(f"You (interruption): {interruption}")
-            response = run_conversation(interruption, client, GOVEE_API_KEY, messages)
+            response = run_conversation(interruption, client, api_keys, messages)
             print(f"Assistant: {response}")
             interruption = play_tts_with_interruption(ELEVENLABS_API_KEY, response, voice_id)
 

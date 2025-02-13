@@ -17,19 +17,30 @@
 """
 
 import json
-from src.functions.functions_loader import load_functions
+import os
+from src.commands.command_registry import CommandRegistry
 from src.utils.messages import get_system_message, get_developer_message
 
-def run_interactive_conversation(openai_client, govee_api_key):
+def initialize_command_registry(api_keys: dict) -> CommandRegistry:
+    """Initialize the command registry with all available commands"""
+    # Create registry and load commands first
+    commands_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "commands")
+    registry = CommandRegistry.load_commands_from_directory(commands_dir)
     
-    functions_data = load_functions()
-    functions = functions_data["schemas"]
-    function_mappings = functions_data["mappings"]
+    # Then register API keys
+    for key_name, key_value in api_keys.items():
+        if key_value:  # Only register non-None API keys
+            registry.register_api_key(key_name, key_value)
+    
+    return registry
+
+def run_interactive_conversation(openai_client, api_keys: dict):
+    registry = initialize_command_registry(api_keys)
     messages = [
         get_system_message(),
         get_developer_message()
     ]
-    print("Welcome to the Govee Assistant! Type your commands below.")
+    print("Welcome to UltraAgent! Type your commands below.")
     print("Type 'exit' to end the session.\n")
 
     while True:
@@ -43,7 +54,7 @@ def run_interactive_conversation(openai_client, govee_api_key):
         response = openai_client.chat.completions.create(
             model="gpt-4o",
             messages=messages,
-            functions=functions,
+            functions=registry.get_command_schemas(),
             function_call="auto"
         )
         current_message = response.choices[0].message
@@ -52,20 +63,26 @@ def run_interactive_conversation(openai_client, govee_api_key):
         while current_message.function_call:
             function_name = current_message.function_call.name
             arguments = json.loads(current_message.function_call.arguments)
-            if function_name in function_mappings:
-                function_to_call = function_mappings[function_name]
+            
+            command = registry.get_command(function_name)
+            if command:
                 try:
-                    result = function_to_call(**arguments, api_key=govee_api_key)
+                    # Validate API keys before execution
+                    if not registry.validate_command_api_keys(command):
+                        missing_keys = [key for key in command.required_api_keys if key not in api_keys or not api_keys[key]]
+                        result = {"status": "error", "message": f"Missing required API keys: {missing_keys}"}
+                    else:
+                        result = command.execute(**arguments, api_key=api_keys.get(command.required_api_keys[0]))
                 except Exception as e:
                     result = {"status": "error", "message": str(e)}
             else:
-                result = {"status": "error", "message": f"Unknown function: {function_name}"}
+                result = {"status": "error", "message": f"Unknown command: {function_name}"}
 
             messages.append({"role": "assistant", "name": function_name, "content": str(result)})
             follow_up_response = openai_client.chat.completions.create(
                 model="gpt-4o",
                 messages=messages,
-                functions=functions,
+                functions=registry.get_command_schemas(),
                 function_call="auto"
             )
             current_message = follow_up_response.choices[0].message
@@ -73,19 +90,17 @@ def run_interactive_conversation(openai_client, govee_api_key):
 
         print(f"Assistant: {current_message.content}")
 
-def run_conversation(user_message, openai_client, govee_api_key, messages):
-    functions_data = load_functions()
-    functions = functions_data["schemas"]
-    function_mappings = functions_data["mappings"]
-
+def run_conversation(user_message, openai_client, api_keys: dict, messages):
+    registry = initialize_command_registry(api_keys)
     
     if not messages:
         messages.extend([get_system_message(), get_developer_message()])
     messages.append({"role": "user", "content": user_message})
+    
     response = openai_client.chat.completions.create(
         model="gpt-4o",
         messages=messages,
-        functions=functions,
+        functions=registry.get_command_schemas(),
         function_call="auto"
     )
     current_message = response.choices[0].message
@@ -94,20 +109,26 @@ def run_conversation(user_message, openai_client, govee_api_key, messages):
     while current_message.function_call:
         function_name = current_message.function_call.name
         arguments = json.loads(current_message.function_call.arguments)
-        if function_name in function_mappings:
-            function_to_call = function_mappings[function_name]
+        
+        command = registry.get_command(function_name)
+        if command:
             try:
-                result = function_to_call(**arguments, api_key=govee_api_key)
+                # Validate API keys before execution
+                if not registry.validate_command_api_keys(command):
+                    missing_keys = [key for key in command.required_api_keys if key not in api_keys or not api_keys[key]]
+                    result = {"status": "error", "message": f"Missing required API keys: {missing_keys}"}
+                else:
+                    result = command.execute(**arguments, api_key=api_keys.get(command.required_api_keys[0]))
             except Exception as e:
                 result = {"status": "error", "message": str(e)}
         else:
-            result = {"status": "error", "message": f"Unknown function: {function_name}"}
+            result = {"status": "error", "message": f"Unknown command: {function_name}"}
 
         messages.append({"role": "assistant", "name": function_name, "content": str(result)})
         follow_up_response = openai_client.chat.completions.create(
             model="gpt-4o",
             messages=messages,
-            functions=functions,
+            functions=registry.get_command_schemas(),
             function_call="auto"
         )
         current_message = follow_up_response.choices[0].message
